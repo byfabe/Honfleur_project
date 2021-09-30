@@ -25,7 +25,7 @@ export default {
           {
             top: -50,
             opacity: 0,
-            ease: "power1.out",
+            ease: "power3.out",
             stagger: 0.3,
             duration: 1,
           },
@@ -41,15 +41,16 @@ export default {
         .from(
           h2,
           {
-            bottom: -20,
+            y: 20,
             opacity: 0,
-            ease: "power1.out",
-            duration: 1
+            ease: "bounce",
+            duration: 1,
           }, 
         )
         tl.play();
       });
     },
+    
   },
 
   mounted: function () {
