@@ -2,6 +2,7 @@
   <div class="container_home">
     <Accueil/>
     <Slider/>
+    <Reserve/>
   </div>
 </template>
 
@@ -9,11 +10,12 @@
 // @ is an alias to /src
 import Accueil from '@/components/Accueil.vue'
 import Slider from '@/components/Slider.vue'
+import Reserve from '@/components/Reserve.vue'
 
 export default {
   name: 'Home',
   components: {
-    Accueil, Slider
+    Accueil, Slider, Reserve
   }
 }
 </script>
@@ -22,6 +24,7 @@ export default {
 .container_home{
   display: flex;
   position: relative;
-  height: 100vh;
+  flex-wrap: wrap;
+  height: 90vh;
 }
 </style>

@@ -4,37 +4,30 @@
       <div class="slideshow">
         <div class="slide s1">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s2">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s3">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s4">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s5">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s6">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s7">
           <div class="overlay"></div>
-          <h2>Home</h2>
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
       </div>
@@ -82,7 +75,7 @@ export default {
     },
     decreasingTransition() {
       slider.scrollLeft += velocity;
-      velocity *= 0.95;
+      velocity *= 0.98;
       if(Math.abs(velocity) > 0.5) {
         rafID = requestAnimationFrame(this.decreasingTransition)
       }
@@ -97,18 +90,20 @@ export default {
 
 <style scoped lang="scss">
 .main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
-  width: 48vw;
-  left: 50%;
-  top: 10%;
-  //   padding: 3vw 5vw 5vw;
+  width: 50%;
+  height: 100%;
 }
 .slideshow-container {
-  margin-top: 4vw;
+  border-radius: 100px;
   overflow: hidden;
   min-height: 60vmin;
   cursor: grab;
   position: relative;
+  margin-top: 7vh;
   &:active {
     cursor: grabbing;
   }
@@ -125,7 +120,7 @@ export default {
   width: 80vmin;
   background-size: cover;
   background-position: center;
-  border-radius: 2px;
+  border-radius: 100px;
   position: relative;
 }
 .slide:not(:nth-child(1)) {
@@ -138,19 +133,7 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.15);
-}
-.slide h2,
-.slide a {
-  color: white;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.39);
-}
-.slide h2 {
-  position: absolute;
-  font-family: "Raleway", serif;
-  top: clamp(10px, 2vw, 20px);
-  left: clamp(10px, 2vw, 20px);
-  font-size: clamp(20px, 2vw, 40px);
-  font-weight: 300;
+  border-radius: 100px;
 }
 .slide a {
   position: absolute;
@@ -160,6 +143,9 @@ export default {
   font-weight: 300;
   text-decoration: none;
   pointer-events: auto;
+  align-self: center;
+  right: 45%;
+  color: white;
 }
 .s1 {
   background-image: url("../assets/1.jpg");
