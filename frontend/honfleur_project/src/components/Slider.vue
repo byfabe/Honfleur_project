@@ -1,31 +1,41 @@
 <template>
   <div class="main-container">
-    <div class="slideshow-container" @mousedown="sliderMouseDown">
+    <div class="slideshow-container" @mousedown="sliderMouseDown" @mousemove="sliderMouseMove" @mouseup="sliderMouseUp" @mouseleave="sliderMouseLeave">
       <div class="slideshow">
         <div class="slide s1">
           <div class="overlay"></div>
           <h2>Home</h2>
-          <a href="#">loupe</a>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s2">
           <div class="overlay"></div>
           <h2>Home</h2>
-          <a href="#">loupe</a>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s3">
           <div class="overlay"></div>
           <h2>Home</h2>
-          <a href="#">loupe</a>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s4">
           <div class="overlay"></div>
           <h2>Home</h2>
-          <a href="#">loupe</a>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
         <div class="slide s5">
           <div class="overlay"></div>
           <h2>Home</h2>
-          <a href="#">loupe</a>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
+        </div>
+        <div class="slide s6">
+          <div class="overlay"></div>
+          <h2>Home</h2>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
+        </div>
+        <div class="slide s7">
+          <div class="overlay"></div>
+          <h2>Home</h2>
+          <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
       </div>
     </div>
@@ -33,31 +43,65 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
+let slider
+let holding = false;
+let firstClickX;
+let alreadyLeftScrolled;
+let velocity;
+let rafID;
 export default {
   methods: {
     sliderMouseDown(e) {
-        /* eslint-disable no-unused-vars */
-      const slider = document.querySelector('.slideshow-container')
-      let holding = false;
-      let firstClickX;
-      let alreadyLeftScrolled;
-
       holding = true;
       firstClickX = e.pageX - slider.offsetLeft;
       alreadyLeftScrolled = slider.scrollLeft;
-      /* eslint-enable no-unused-vars */
+      this.stopTransition();
     },
+    sliderMouseMove(e) {
+        if(!holding) return;
+        const x = e.pageX - slider.offsetLeft;
+        const scrolled = (x - firstClickX) * 2;
+        const prevScrollLeft = slider.scrollLeft;
+        slider.scrollLeft = alreadyLeftScrolled - scrolled;
+        velocity = slider.scrollLeft - prevScrollLeft;
+    },
+    sliderMouseUp() {
+        holding = false;
+        this.startTransition();
+    },
+    sliderMouseLeave() {
+        holding = false;
+    },
+    startTransition () {
+      this.stopTransition();
+      rafID = requestAnimationFrame(this.decreasingTransition);
+    },
+    stopTransition() {
+      cancelAnimationFrame(rafID)
+    },
+    decreasingTransition() {
+      slider.scrollLeft += velocity;
+      velocity *= 0.95;
+      if(Math.abs(velocity) > 0.5) {
+        rafID = requestAnimationFrame(this.decreasingTransition)
+      }
+    }
   },
+  mounted: function() {
+    slider = document.querySelector(".slideshow-container");
+  }
 };
+/* eslint-enable no-unused-vars */
 </script>
 
 <style scoped lang="scss">
 .main-container {
   position: relative;
-  width: 100%;
+  width: 48vw;
   left: 50%;
   top: 10%;
-  padding: 3vw 5vw 5vw;
+  //   padding: 3vw 5vw 5vw;
 }
 .slideshow-container {
   margin-top: 4vw;
@@ -102,9 +146,10 @@ export default {
 }
 .slide h2 {
   position: absolute;
+  font-family: "Raleway", serif;
   top: clamp(10px, 2vw, 20px);
   left: clamp(10px, 2vw, 20px);
-  font-size: clamp(20px, 3vw, 40px);
+  font-size: clamp(20px, 2vw, 40px);
   font-weight: 300;
 }
 .slide a {
@@ -123,6 +168,9 @@ export default {
   background-image: url("../assets/2.jpg");
 }
 .s3 {
+  background-image: url("../assets/3.jpg");
+}
+.s4 {
   background-image: url("../assets/4.jpg");
 }
 .s5 {
@@ -133,8 +181,5 @@ export default {
 }
 .s7 {
   background-image: url("../assets/7.jpg");
-}
-.s8 {
-  background-image: url("../assets/8.jpg");
 }
 </style>
