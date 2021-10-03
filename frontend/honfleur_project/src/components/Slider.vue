@@ -1,6 +1,12 @@
 <template>
   <div class="main-container">
-    <div class="slideshow-container" @mousedown="sliderMouseDown" @mousemove="sliderMouseMove" @mouseup="sliderMouseUp" @mouseleave="sliderMouseLeave">
+    <div
+      class="slideshow-container"
+      @mousedown="sliderMouseDown"
+      @mousemove="sliderMouseMove"
+      @mouseup="sliderMouseUp"
+      @mouseleave="sliderMouseLeave"
+    >
       <div class="slideshow">
         <div class="slide s1">
           <div class="overlay"></div>
@@ -31,13 +37,20 @@
           <a href="#"><i class="fas fa-search-plus"></i></a>
         </div>
       </div>
+      <div id="slideEnd"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 /* eslint-disable no-unused-vars */
-let slider
+let slider;
+let slideshow;
 let holding = false;
 let firstClickX;
 let alreadyLeftScrolled;
@@ -52,38 +65,51 @@ export default {
       this.stopTransition();
     },
     sliderMouseMove(e) {
-        if(!holding) return;
-        const x = e.pageX - slider.offsetLeft;
-        const scrolled = (x - firstClickX) * 2;
-        const prevScrollLeft = slider.scrollLeft;
-        slider.scrollLeft = alreadyLeftScrolled - scrolled;
-        velocity = slider.scrollLeft - prevScrollLeft;
+      if (!holding) return;
+      const x = e.pageX - slider.offsetLeft;
+      const scrolled = (x - firstClickX) * 2;
+      const prevScrollLeft = slider.scrollLeft;
+      slider.scrollLeft = alreadyLeftScrolled - scrolled;
+      velocity = slider.scrollLeft - prevScrollLeft;
     },
     sliderMouseUp() {
-        holding = false;
-        this.startTransition();
+      holding = false;
+      this.startTransition();
     },
     sliderMouseLeave() {
-        holding = false;
+      holding = false;
     },
-    startTransition () {
+    startTransition() {
       this.stopTransition();
       rafID = requestAnimationFrame(this.decreasingTransition);
     },
     stopTransition() {
-      cancelAnimationFrame(rafID)
+      cancelAnimationFrame(rafID);
     },
     decreasingTransition() {
       slider.scrollLeft += velocity;
       velocity *= 0.98;
-      if(Math.abs(velocity) > 0.5) {
-        rafID = requestAnimationFrame(this.decreasingTransition)
+      if (Math.abs(velocity) > 0.5) {
+        rafID = requestAnimationFrame(this.decreasingTransition);
       }
-    }
+    },
+    // sliderPlay() {
+    //   //renommer gsap et créer function pause https://greensock.com/forums/topic/23510-stopping-an-animation/
+    //   gsap.to(".slide", {
+    //     duration: 500,
+    //     ease: "none",
+    //     x: "-=3000", //move each box 500px to right
+    //     modifiers: {
+    //       x: gsap.utils.unitize((x) => parseFloat(x) % 3000), //force x value to be between 0 and 500 using modulus
+    //     },
+    //     repeat: -1,
+    //   });
+    // },
   },
-  mounted: function() {
+  mounted: function () {
     slider = document.querySelector(".slideshow-container");
-  }
+    //this.sliderPlay();
+  },
 };
 /* eslint-enable no-unused-vars */
 </script>
@@ -98,7 +124,7 @@ export default {
   height: 100%;
 }
 .slideshow-container {
-  border-radius: 100px;
+  border-radius: 100% 100% 100% 100% / 100% 100% 98% 100% ;
   overflow: hidden;
   min-height: 60vmin;
   cursor: grab;
@@ -120,7 +146,7 @@ export default {
   width: 80vmin;
   background-size: cover;
   background-position: center;
-  border-radius: 100px;
+  border-radius: 100% 100% 100% 100% / 100% 100% 98% 100% ;
   position: relative;
 }
 .slide:not(:nth-child(1)) {
@@ -133,7 +159,7 @@ export default {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.15);
-  border-radius: 100px;
+  border-radius: 100% 100% 100% 100% / 100% 100% 98% 100% ;
 }
 .slide a {
   position: absolute;

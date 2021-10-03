@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
+  <div class="container" id="home-anchor">
     <header>
       <ul>
-        <li><a href="">Accueil</a></li>
-        <li><a href="">Réserver</a></li>
+        <li><router-link to="/#home-anchor"><i class="fas fa-home"></i></router-link></li>
+        <li><router-link to="/#reserve-anchor">Réserver</router-link></li>
         <li><a href="">Contact</a></li>
       </ul>
     </header>
     <div class="container-titre">
-      <h1><span>Résidence </span><span>du </span><span>Phare</span></h1>
+      <h1><span>Résidence </span><span>le </span><span>Phare</span></h1>
       <div class="line">
         <div class="l1"></div>
       </div>
@@ -77,7 +77,6 @@ header {
   top: 0;
   width: 100vw;
   height: clamp(50px, 6vh, 8vh);;
-  border: 1px solid black;
   background: rgba(0, 0, 0, 0.863);
   z-index: 1;
 }
