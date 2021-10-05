@@ -134,6 +134,8 @@
       &:hover {
         background: rgb(188, 218, 23);
         transition: 0.2s ease-in;
+        transform: scale(1.1);
+        box-shadow: 0px 0px 10px 0px rgba(204, 248, 6, 0.75);
       }
     }
   }

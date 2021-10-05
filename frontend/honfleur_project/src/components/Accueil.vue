@@ -87,11 +87,17 @@ ul {
   width: 50%;
   height: 100%;
   list-style-type: none;
+  & li:hover {
+    transform: scale(0.95);
+  }
   & a {
     text-decoration: none;
     font-family: "Prata", serif;
     color: #f1f1f1;
     font-size: clamp(16px, 1vw, 20px);
+    &:hover {
+      color: rgba(131, 151, 14, 0.829);
+    }
   }
 }
 .container-titre {
