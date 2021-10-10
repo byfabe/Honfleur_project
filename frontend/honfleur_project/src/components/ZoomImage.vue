@@ -6,7 +6,10 @@
     @touchmove.prevent
   >
     <div class="container-img" @click="zoomOut">
-      <img :src="require('../assets/' + getImages[this.count])" alt="" />
+      <img
+        :src="require('../assets/' + getImages[this.$store.state.count])"
+        alt=""
+      />
       <i class="fas fa-times"></i>
     </div>
     <div class="chevron">
@@ -20,9 +23,7 @@
 import { mapGetters } from "vuex";
 export default {
   data() {
-    return {
-      count: this.$store.state.count
-    };
+    return {};
   },
   methods: {
     zoomOut() {
@@ -32,27 +33,27 @@ export default {
     chevronNext() {
       let nbImg = this.getImages.length;
 
-      if (this.count < nbImg - 1) {
-        this.count++;
+      if (this.$store.state.count < nbImg - 1) {
+        this.$store.state.count++;
       } else {
-        this.count = 0;
+        this.$store.state.count = 0;
       }
     },
     chevronPrevious() {
       let nbImg = this.getImages.length;
 
-      if (this.count > 0) {
-        this.count--;
+      if (this.$store.state.count > 0) {
+        this.$store.state.count--;
       } else {
-        this.count = nbImg - 1;
+        this.$store.state.count = nbImg - 1;
       }
     },
   },
   computed: {
     ...mapGetters(["getImages", "getCount"]),
-  },
-  mounted: function () {
-    console.log("popo", this.count);
+    count: function () {
+      return this.$store.state.count;
+    },
   },
 };
 </script>
