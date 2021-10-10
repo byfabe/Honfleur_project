@@ -4,7 +4,7 @@
       <ul>
         <li><router-link to="/#home-anchor"><i class="fas fa-home"></i></router-link></li>
         <li><router-link to="/#reserve-anchor">Réserver</router-link></li>
-        <li><a href="">Contact</a></li>
+        <li><router-link to="/#contact-anchor">Contact</router-link></li>
       </ul>
     </header>
     <div class="container-titre">
@@ -69,6 +69,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   width: 50%;
+  background: #f1f1f1;
 }
 header {
   display: flex;
@@ -87,16 +88,15 @@ ul {
   width: 50%;
   height: 100%;
   list-style-type: none;
-  & li:hover {
-    transform: scale(0.95);
-  }
   & a {
     text-decoration: none;
-    font-family: "Prata", serif;
+    font-family: "Raleway", serif;
     color: #f1f1f1;
     font-size: clamp(16px, 1vw, 20px);
+    transition: ease-out 0.2s;
     &:hover {
       color: rgba(131, 151, 14, 0.829);
+      transition: ease-out 0.2s;
     }
   }
 }

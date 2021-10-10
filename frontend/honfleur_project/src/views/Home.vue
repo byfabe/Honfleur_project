@@ -4,6 +4,7 @@
     <Accueil/>
     <Slider/>
     <Reserve/>
+    <Contact/>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Accueil from '@/components/Accueil.vue'
 import Slider from '@/components/Slider.vue'
 import Reserve from '@/components/Reserve.vue'
 import ZoomImage from '@/components/ZoomImage.vue'
+import Contact from '@/components/Contact.vue'
 
 export default {
   name: 'Home',
@@ -20,7 +22,8 @@ export default {
     Accueil, 
     Slider, 
     Reserve, 
-    ZoomImage
+    ZoomImage,
+    Contact
   }
 }
 </script>
@@ -31,5 +34,6 @@ export default {
   position: relative;
   flex-wrap: wrap;
   height: 90vh;
+  background: #f1f1f1 repeat;
 }
 </style>

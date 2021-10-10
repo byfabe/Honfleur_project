@@ -44,9 +44,9 @@
 <style scoped lang="scss">
 .container-main {
   display: flex;
-  height: 650px;
+  height: 600px;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.904);
+  background: #f1f1f1;
 }
 .container-left {
   display: flex;
@@ -55,14 +55,15 @@
   justify-content: center;
   width: 50%;
   height: 100%;
+  background: rgba(0, 0, 0, 0.863);
   & .map-marker {
     font-size: clamp(16px, 2.5vw, 50px);
     color: rgb(116, 116, 116);
     margin-bottom: 2vh;
   }
   & iframe {
-    width: 600px;
-    height: 450px;
+    width: 50%;
+    height: 50%;
     border: 0;
     border-radius: 5px;
   }
@@ -74,7 +75,7 @@
   justify-content: center;
   width: 50%;
   height: 100%;
-  background: rgba(131, 151, 14, 0.829);
+  background: rgba(0, 0, 0, 0.863);
 }
 .agenda-icon {
   font-size: clamp(16px, 2.5vw, 50px);
@@ -88,21 +89,21 @@
   height: 500px;
   & h2 {
     font-family: "Raleway", serif;
-    color: rgba(0, 0, 0, 0.904);
+    color: #f1f1f1;
     font-size: clamp(16px, 1.6vw, 40px);
     font-weight: 400;
   }
   & .line {
     width: 10vw;
     height: 2px;
-    background: rgba(0, 0, 0, 0.904);
+    background: #f1f1f1;
     border-radius: 5px;
   }
   & .info-reserve {
     margin-top: 3vh;
     font-family: "Raleway", serif;
-    color: rgba(0, 0, 0, 0.904);
-    font-size: clamp(16px, 1.2vw, 25px);
+    color: #f1f1f1;
+    font-size: clamp(16px, 1.1vw, 25px);
   }
   & .container-partner {
     display: flex;
@@ -146,8 +147,8 @@
     margin-top: 3vh;
     & .info-text {
       font-family: "Raleway", serif;
-      color: rgba(0, 0, 0, 0.904);
-      font-size: clamp(16px, 1.2vw, 25px);
+      color: #f1f1f1;
+      font-size: clamp(16px, 1vw, 25px);
       width: 90%;
     }
     & .info-icon {

@@ -1,7 +1,10 @@
 <template>
   <div class="main-container">
-    <i class="fas fa-chevron-left display"></i>
-    <i class="fas fa-chevron-right"></i>
+    <i
+      class="fas fa-chevron-left display chevron-left"
+      @click="scrollRightChevron"
+    ></i>
+    <i class="fas fa-chevron-right" @click="scrollLeftChevron"></i>
     <div
       class="slideshow-container"
       @mousedown="sliderMouseDown"
@@ -12,31 +15,31 @@
       <div class="slideshow">
         <div class="slide s1">
           <div class="overlay"></div>
-          <a href="#"><i @click="zoomImage" class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(0)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s2">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(1)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s3">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(2)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s4">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(3)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s5">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(4)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s6">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(5)" class="fas fa-search-plus"></i>
         </div>
         <div class="slide s7">
           <div class="overlay"></div>
-          <a href="#"><i class="fas fa-search-plus"></i></a>
+          <i @click="zoomImage(6)" class="fas fa-search-plus"></i>
         </div>
       </div>
     </div>
@@ -44,19 +47,13 @@
 </template>
 
 <script>
-//import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-// gsap.registerPlugin(ScrollTrigger);
-// gsap.registerPlugin(ScrollToPlugin);
-/* eslint-disable no-unused-vars */
 let slider;
-//let slideshow;
 let holding = false;
 let firstClickX;
 let alreadyLeftScrolled;
 let velocity;
 let rafID;
+let chevronLeft;
 export default {
   methods: {
     sliderMouseDown(e) {
@@ -72,6 +69,11 @@ export default {
       const prevScrollLeft = slider.scrollLeft;
       slider.scrollLeft = alreadyLeftScrolled - scrolled;
       velocity = slider.scrollLeft - prevScrollLeft;
+      if (slider.scrollLeft > 1) {
+        chevronLeft.classList.remove("display");
+      } else {
+        chevronLeft.classList.add("display");
+      }
     },
     sliderMouseUp() {
       holding = false;
@@ -89,31 +91,34 @@ export default {
     },
     decreasingTransition() {
       slider.scrollLeft += velocity;
-      velocity *= 0.98;
+      velocity *= 0.95;
       if (Math.abs(velocity) > 0.5) {
         rafID = requestAnimationFrame(this.decreasingTransition);
       }
     },
-    // sliderPlay() {
-    //   //renommer gsap et créer function pause https://greensock.com/forums/topic/23510-stopping-an-animation/
-    //   gsap.to(".slide", {
-    //     duration: 500,
-    //     ease: "none",
-    //     x: "-=3000", //move each box 500px to right
-    //     modifiers: {
-    //       x: gsap.utils.unitize((x) => parseFloat(x) % 3000), //force x value to be between 0 and 500 using modulus
-    //     },
-    //     repeat: -1,
-    //   });
-    // },
-    zoomImage() {
-      let zoomAttribute = document.querySelector('.zoom');
-      zoomAttribute.classList.remove("display-zoom")
-    }
+    zoomImage(data) {
+      let zoomAttribute = document.querySelector(".zoom");
+      zoomAttribute.classList.remove("display-zoom");
+      this.$store.commit("ADD_COUNT", data);
+    },
+    scrollLeftChevron() {
+      slider.scroll(slider.scrollLeft + 250, 0);
+      if (slider.scrollLeft > 1) {
+        chevronLeft.classList.remove("display");
+      } else {
+        chevronLeft.classList.add("display");
+      }
+    },
+    scrollRightChevron() {
+      slider.scroll(slider.scrollLeft - 250, 0);
+      if (slider.scrollLeft === 0) {
+        chevronLeft.classList.add("display");
+      }
+    },
   },
   mounted: function () {
     slider = document.querySelector(".slideshow-container");
-    //this.sliderPlay();
+    chevronLeft = document.querySelector(".chevron-left");
   },
 };
 /* eslint-enable no-unused-vars */
@@ -125,6 +130,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  background: #f1f1f1;
   width: 50%;
   height: 100%;
 }
@@ -196,7 +202,7 @@ export default {
   bottom: 0;
   background: rgba(0, 0, 0, 0.15);
 }
-.slide a {
+.slide .fa-search-plus {
   position: absolute;
   bottom: clamp(10px, 2vw, 20px);
   right: clamp(10px, 2vw, 20px);
@@ -204,6 +210,7 @@ export default {
   font-weight: 300;
   text-decoration: none;
   pointer-events: auto;
+  cursor: pointer;
   align-self: center;
   right: 45%;
   color: white;

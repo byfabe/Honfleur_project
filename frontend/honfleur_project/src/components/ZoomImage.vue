@@ -21,14 +21,13 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      count: 0,
+      count: this.$store.state.count
     };
   },
   methods: {
     zoomOut() {
       let zoomAttribute = document.querySelector(".zoom");
       zoomAttribute.classList.add("display-zoom");
-      this.count = 0;
     },
     chevronNext() {
       let nbImg = this.getImages.length;
@@ -50,7 +49,10 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getImages"]),
+    ...mapGetters(["getImages", "getCount"]),
+  },
+  mounted: function () {
+    console.log("popo", this.count);
   },
 };
 </script>

@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    count: 0,
     images: [
       "1.jpg",
       "2.jpg",
@@ -14,8 +15,12 @@ export default createStore({
   },
   getters: {
     getImages: (state) => state.images,
+    getCount: (state) => state.count,
   },
   mutations: {
+    ADD_COUNT(state, data) {
+      state.count = data;
+    },
   },
   actions: {
   },
