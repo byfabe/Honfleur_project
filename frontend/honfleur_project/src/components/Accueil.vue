@@ -15,8 +15,6 @@
       <h2>Honfleur</h2>
       <p class="quote q1"><i class="fas fa-quote-left qicon"></i> J’ouvre la porte et le toit de la chapelle apparaît, comme dans un tableau,</p>
       <p class="quote q2">Je tourne mon regard et j’aperçois le phare qui signalait l’entrée d’Honfleur.</p>
-      <p class="quote q3">Prémices d’un voyage dans cette belle ville, dans son histoire, au travers de ses ruelles si charmantes,</p>
-      <p class="quote q4">J’ai envie de m’y poser et de découvrir.</p>
       <p class="quote q5">Je vous invite à partager cette découverte. <i class="fas fa-quote-right qicon"></i></p>
     </div>
   </div>
@@ -133,7 +131,7 @@ h2 {
   text-align: center;
 }
 .q1 {
-  margin-top: 5%;
+  margin-top: 6%;
 }
 .qicon {
   font-size: clamp(16px, 1vw, 30px);

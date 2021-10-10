@@ -102,7 +102,7 @@ export default {
       this.$store.commit("ADD_COUNT", data);
     },
     scrollLeftChevron() {
-      slider.scroll(slider.scrollLeft + 250, 0);
+      slider.scroll(slider.scrollLeft + 350, 0);
       if (slider.scrollLeft > 1) {
         chevronLeft.classList.remove("display");
       } else {
@@ -110,7 +110,7 @@ export default {
       }
     },
     scrollRightChevron() {
-      slider.scroll(slider.scrollLeft - 250, 0);
+      slider.scroll(slider.scrollLeft - 350, 0);
       if (slider.scrollLeft === 0) {
         chevronLeft.classList.add("display");
       }

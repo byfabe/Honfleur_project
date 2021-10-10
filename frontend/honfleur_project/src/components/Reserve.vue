@@ -2,6 +2,14 @@
   <div id="reserve-anchor" class="container-main">
     <div class="container-left">
       <i class="fas fa-map-marker-alt map-marker"></i>
+      <div class="info-location">
+        <p class="adress a1">Place, Jean de vienne</p>
+        <p class="adress a2">14600 Honfleur</p>
+        <div class="line"></div>
+        <p class="adress a3">
+          De Paris, autoroute A13 direction Le Havre/Honfleur/Pont de Normandie.
+        </p>
+      </div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.169677792121!2d0.225737615868515!3d49.42460606862493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e033b7919c7d7f%3A0xe524dcccdb3e33f!2sPl.%20Jean%20de%20Vienne%2C%2014600%20Honfleur!5e0!3m2!1sfr!2sfr!4v1633177311414!5m2!1sfr!2sfr"
         allowfullscreen=""
@@ -13,7 +21,7 @@
         <i class="far fa-calendar-alt agenda-icon"></i>
         <h2>Réserver</h2>
         <div class="line"></div>
-        <p class="info-reserve">Nos sites partenaire pour réserver en ligne.</p>
+        <p class="info-reserve">Nos sites partenaires pour réserver en ligne.</p>
         <div class="container-partner">
           <div class="partner p1">
             <a href="" class="btn-reserve">Abritel</a>
@@ -47,6 +55,7 @@
   height: 600px;
   width: 100vw;
   background: #f1f1f1;
+  border-top: 5px solid rgba(0, 0, 0, 0.89);
 }
 .container-left {
   display: flex;
@@ -60,6 +69,31 @@
     font-size: clamp(16px, 2.5vw, 50px);
     color: rgb(116, 116, 116);
     margin-bottom: 2vh;
+  }
+  & .info-location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3vh 0 3vh 0;
+    & .adress {
+      font-family: "Raleway", serif;
+      color: #f1f1f1;
+      font-size: clamp(16px, 1vw, 25px);
+    }
+    & .line {
+      width: 10vw;
+      height: 2px;
+      background: rgb(153, 177, 18);
+      border-radius: 5px;
+      margin-top: 2vh;
+    }
+    & .a2 {
+      margin-top: 1vh;
+    }
+    & .a3 {
+      margin-top: 2vh;
+    }
   }
   & iframe {
     width: 50%;
