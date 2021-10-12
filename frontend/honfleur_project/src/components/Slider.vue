@@ -11,6 +11,9 @@
       @mousemove="sliderMouseMove"
       @mouseup="sliderMouseUp"
       @mouseleave="sliderMouseLeave"
+      @touchstart="sliderTouchDown"
+      @touchend="sliderTouchUp"
+      @touchmove="sliderTouchMove"
     >
       <div class="slideshow">
         <div class="slide s1">
@@ -96,6 +99,29 @@ export default {
         rafID = requestAnimationFrame(this.decreasingTransition);
       }
     },
+    sliderTouchDown(e) {
+      holding = true;
+      firstClickX = e.targetTouches[0].pageX - slider.offsetLeft;
+      alreadyLeftScrolled = slider.scrollLeft;
+      this.stopTransition();
+    },
+    sliderTouchUp() {
+      holding = false;
+      this.startTransition();
+    },
+    sliderTouchMove(e) {
+      if (!holding) return;
+      const x = e.targetTouches[0].pageX - slider.offsetLeft;
+      const scrolled = (x - firstClickX) * 2;
+      const prevScrollLeft = slider.scrollLeft;
+      slider.scrollLeft = alreadyLeftScrolled - scrolled;
+      velocity = slider.scrollLeft - prevScrollLeft;
+      if (slider.scrollLeft > 1) {
+        chevronLeft.classList.remove("display");
+      } else {
+        chevronLeft.classList.add("display");
+      }
+    },
     zoomImage(data) {
       let zoomAttribute = document.querySelector(".zoom");
       zoomAttribute.classList.remove("display-zoom");
@@ -138,7 +164,7 @@ export default {
   position: absolute;
   right: 0;
   top: 50%;
-  font-size: clamp(10px, 3vw, 200px);
+  font-size: clamp(35px, 3vw, 200px);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.685);
   margin-right: 1vw;
@@ -152,7 +178,7 @@ export default {
   position: absolute;
   left: 0;
   top: 50%;
-  font-size: clamp(10px, 3vw, 200px);
+  font-size: clamp(35px, 3vw, 200px);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.685);
   margin-left: 1vw;
@@ -244,5 +270,22 @@ export default {
 }
 .s7 {
   background-image: url("../assets/7.jpg");
+}
+@media screen and (max-width: 1350px) {
+  .main-container {
+    width: 100%;
+  }
+  .container-titre {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .slideshow-container {
+    margin-top: 0;
+  }
+  .slideshow-container {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
 }
 </style>

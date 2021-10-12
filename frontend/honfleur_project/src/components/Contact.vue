@@ -28,8 +28,13 @@
       </div>
     </div>
     <footer>
-      <a href="" class="signature">byfabe@gmail.com</a
-      ><span class="space">|</span><a href="" class="mention">Mention légale</a>
+      <a href="https://www.linkedin.com/in/fabien-rivet-382b01204/">Made by Fabien Rivet</a>
+      <span class="space">|</span>
+      <a href="mailto:byfabe@gmail.com" class="signature">byfabe@gmail.com</a
+      ><span class="space">|</span>
+      <a href="https://www.linkedin.com/in/fabien-rivet-382b01204/">linkedin</a>
+      <span class="space">|</span>
+      <a href="" class="mention">Mention légale</a>
     </footer>
   </div>
 </template>
@@ -49,7 +54,7 @@
   width: 50%;
   height: 100%;
   & .fa-envelope {
-    font-size: clamp(16px, 2.5vw, 50px);
+    font-size: clamp(30px, 2.5vw, 50px);
     color: rgb(153, 177, 18);
     margin-bottom: 2vh;
   }
@@ -113,7 +118,7 @@
   width: 50%;
   height: 100%;
   & img {
-    width: 4vw;
+    width: clamp(50px, 4vw, 100px);
     margin-left: 2vw;
     transition: ease-in 0.2s;
     &:hover {
@@ -132,13 +137,32 @@ footer {
   & a {
     font-family: "Raleway", serif;
     color: #f1f1f1;
-    font-size: clamp(11px, 0.7vw, 40px);
+    font-size: clamp(9px, 0.7vw, 40px);
     font-weight: 400;
     text-decoration: none;
   }
   & .space {
     color: #f1f1f1;
     margin: 0 1vw 0 1vw;
+  }
+}
+@media screen and (max-width: 1350px){
+  .container-contact {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+  .content-left {
+    width: 90%;
+    margin-top: 3%;
+  }
+  .container-left-contact {
+    width: 100%;
+  }
+  .container-right-contact {
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 5%;
   }
 }
 </style>

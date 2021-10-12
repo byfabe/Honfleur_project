@@ -36,4 +36,11 @@ export default {
   height: 90vh;
   background: #f1f1f1 repeat;
 }
+@media screen and (max-width: 1350px){
+  .container_home {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+}
 </style>

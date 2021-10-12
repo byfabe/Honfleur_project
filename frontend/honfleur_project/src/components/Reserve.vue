@@ -21,7 +21,9 @@
         <i class="far fa-calendar-alt agenda-icon"></i>
         <h2>Réserver</h2>
         <div class="line"></div>
-        <p class="info-reserve">Nos sites partenaires pour réserver en ligne.</p>
+        <p class="info-reserve">
+          Nos sites partenaires pour réserver en ligne.
+        </p>
         <div class="container-partner">
           <div class="partner p1">
             <a href="" class="btn-reserve">Abritel</a>
@@ -52,7 +54,7 @@
 <style scoped lang="scss">
 .container-main {
   display: flex;
-  height: 600px;
+  height: 80%;
   width: 100vw;
   background: #f1f1f1;
   border-top: 5px solid rgba(0, 0, 0, 0.89);
@@ -66,7 +68,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.863);
   & .map-marker {
-    font-size: clamp(16px, 2.5vw, 50px);
+    font-size: clamp(30px, 2.5vw, 50px);
     color: rgb(116, 116, 116);
     margin-bottom: 2vh;
   }
@@ -112,7 +114,7 @@
   background: rgba(0, 0, 0, 0.863);
 }
 .agenda-icon {
-  font-size: clamp(16px, 2.5vw, 50px);
+  font-size: clamp(30px, 2.5vw, 50px);
   color: rgb(153, 177, 18);
   margin-bottom: 2vh;
 }
@@ -156,8 +158,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100px;
-      height: 100px;
+      width: clamp(60px, 5vw, 100px);
+      height: clamp(60px, 5vw, 100px);
       font-family: "Raleway", serif;
       color: rgba(0, 0, 0, 0.849);
       font-size: clamp(16px, 1vw, 25px);
@@ -182,7 +184,7 @@
     & .info-text {
       font-family: "Raleway", serif;
       color: #f1f1f1;
-      font-size: clamp(16px, 1vw, 25px);
+      font-size: clamp(12px, 1vw, 25px);
       width: 90%;
     }
     & .info-icon {
@@ -190,6 +192,49 @@
       color: rgb(153, 177, 18);
       align-self: center;
     }
+  }
+}
+@media screen and (max-width: 1350px) {
+  .container-main {
+    flex-direction: column;
+  }
+  .container-right {
+    border-top: 5px solid rgb(153, 177, 18);
+  }
+  .container-content {
+    width: 90%;
+    height: auto;
+    padding-top: 3%;
+    & .container-partner {
+      margin-top: 3vh;
+      margin-bottom: 3vh;
+      & .partner {
+        justify-content: center;
+      }
+    }
+    & .info-reserve {
+      margin-top: 3%;
+    }
+    & .info {
+      margin-top: 0vh;
+      margin-bottom: 3%;
+      height: 100%;
+    }
+  }
+  .container-left {
+    width: 100%;
+    padding: 3% 0 3% 0;
+    & iframe {
+      width: 80%;
+      height: auto;
+    }
+    & .adress {
+      text-align: center;
+    }
+  }
+  .container-right {
+    width: 100%;
+    height: auto;
   }
 }
 </style>

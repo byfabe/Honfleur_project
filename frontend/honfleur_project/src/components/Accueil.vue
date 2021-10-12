@@ -74,7 +74,7 @@ header {
   justify-content: center;
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: clamp(50px, 6vh, 8vh);;
   background: rgba(0, 0, 0, 0.863);
   z-index: 1;
@@ -107,7 +107,7 @@ ul {
 }
 h1 {
   font-family: "Prata", serif;
-  font-size: clamp(11px, 5vw, 80px);
+  font-size: clamp(30px, 5vw, 80px);
   text-align: center;
   font-weight: 100;
   color: rgba(0, 0, 0, 0.884);
@@ -118,14 +118,14 @@ h1 {
 h2 {
   position: relative;
   font-family: "Raleway", cursive;
-  font-size: 1.8rem;
+  font-size: clamp(20px, 2vw, 80px);;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.884);
   margin-top: 20px;
 }
 .quote {
   font-family: 'Reenie Beanie', cursive;
-  font-size: clamp(16px, 1.6vw, 30px);
+  font-size: clamp(18px, 1.6vw, 30px);
   color: rgba(0, 0, 0, 0.856);
   width: 50%;
   text-align: center;
@@ -145,6 +145,23 @@ h2 {
     height: 3px;
     background: rgba(131, 151, 14, 0.829);
     border-radius: 5px;
+  }
+}
+@media screen and (max-width: 1350px){
+  ul {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+  .container-titre {
+    width: 100%;
+    height: 50vh;
+    margin-top: 10%;
+  }
+  .quote {
+    width: 80%;
   }
 }
 </style>

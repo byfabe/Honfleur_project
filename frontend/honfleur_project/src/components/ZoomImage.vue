@@ -58,7 +58,6 @@ export default {
 };
 </script>
 
-
 <style scoped lang="scss">
 .zoom {
   display: flex;
@@ -78,7 +77,7 @@ export default {
   right: 0;
   margin-right: 5vw;
   color: rgba(255, 255, 255, 0.692);
-  font-size: clamp(16px, 4vw, 90px);
+  font-size: clamp(35px, 4vw, 90px);
   font-weight: 400;
   cursor: pointer;
   z-index: 3;
@@ -92,7 +91,7 @@ export default {
   left: 0;
   margin-left: 5vw;
   color: rgba(255, 255, 255, 0.692);
-  font-size: clamp(16px, 4vw, 90px);
+  font-size: clamp(35px, 4vw, 90px);
   font-weight: 400;
   cursor: pointer;
   z-index: 3;
